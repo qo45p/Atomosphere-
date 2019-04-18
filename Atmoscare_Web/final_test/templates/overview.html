@@ -1,0 +1,273 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+  <html>
+  <head>
+    <title>Atmoscare+</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "images/favicons/apple-touch-icon.png" %}">
+    <link rel="icon" type="image/png" href="https://i.imgur.com/oII4sMV.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://i.imgur.com/caRscKu.png" sizes="16x16">
+    <link rel="manifest" href="{% static "images/favicons/manifest.json" %}">
+    <link rel="mask-icon" href="{% static "images/favicons/safari-pinned-tab.svg" %}" color="#52b68b">
+    <meta name="theme-color" content="#52b68b">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static "materialize/css/materialize.min.css" %}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static "css/overview.min.css" %}"  media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo"><img src="{% static "images/icon-white.png" %}"><span>總覽</span></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="side-nav" id="mobile-demo">
+          <img src="{% static "images/icon-green.png" %}">
+          <li><a class="active" href="/overview"><i class="material-icons">home</i><span>&nbsp;總覽</span></a></li>
+          <li><a href="/questions"><i class="material-icons">help</i><span>&nbsp;常見問題</span></a></li>
+          <li><a href="/literatures"><i class="material-icons">class</i><span>&nbsp;文獻資料</span></a></li>
+          <li><a href="/settings"><i class="material-icons">settings</i><span>&nbsp;設定</span></a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="main_container" class="container">
+      <div class="row">
+        <div class="col hide-on-med-and-down l3">
+          <ul class="section table-of-contents">
+            <li><a class="active" href="/overview"><i class="material-icons">home</i><span>&nbsp;總覽</span></a></li>
+            <li><a href="/questions"><i class="material-icons">help</i><span>&nbsp;常見問題</span></a></li>
+            <li><a href="/literatures"><i class="material-icons">class</i><span>&nbsp;文獻資料</span></a></li>
+            <li><a href="/settings"><i class="material-icons">settings</i><span>&nbsp;設定</span></a></li>
+          </ul>
+        </div>
+        <div class="col l9">
+          <div id="top">
+            <span>氣象資料：{{update}}</span> 
+            <hr>   
+          </div>
+          <div class="row">
+            <div class="col l6 m6 s12">
+              <div class="card white hoverable z-depth-2">
+                <div class="card-content #424242">
+                  <span style="height:223px;">目前所在的風險評估：</span>
+                  <div class="row" style="height:200px;">
+                    <div id="progress" class="col s5 m5 l5">
+                      <div id="container1"></div>
+                    </div>
+                    <div class="col s7 m7 l7">
+                      <ul class="collection">
+                        <li class="collection-item">
+                          <span class="title">中風</span>
+                          <div id="progress_detail" class="row">
+                            <div class="col s7 m7 l7">
+                              <div id="container2"></div>
+                            </div>
+                            <div class="col s5 m5 l5">
+                              <span style="color:{{StrokeColor}}">{{StrokeState}}</span>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="collection-item">
+                          <span class="title">心臟病</span>
+                          <div id="progress_detail" class="row">
+                            <div class="col s7 m7 l7">
+                              <div id="container3"></div>
+                            </div>
+                            <div class="col s5 m5 l5">
+                              <span style="color:{{HeartColor}}">{{HeartState}}</span>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="collection-item">
+                          <span class="title">心臟衰竭</span>
+                          <div id="progress_detail" class="row">
+                            <div class="col s7 m7 l7">
+                              <div id="container4"></div>
+                            </div>
+                            <div class="col s5 m5 l5">
+                              <span style="color:{{HFColor}}">{{HFState}}</span>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="collection-item">
+                          <span class="title">心房震顫</span>
+                          <div id="progress_detail" class="row">
+                            <div class="col s7 m7 l7">
+                              <div id="container5"></div>
+                            </div>
+                            <div class="col s5 m5 l5">
+                              <span style="color:{{AFColor}}">{{AFState}}</span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col l6 m6 s12">
+              <div class="card xE9611D hoverable z-depth-2" style="background:{{OverallColor}};">
+                <div class="card-content white-text">
+                  <span class="card-title">針對所在環境建議</span>
+                </div>
+                <p>{{suggestion}}</p>
+              </div>
+            </div>
+            <div class="col l6 m6 s12">
+              <div class="card white hoverable z-depth-2">
+                <div class="card-content white-text weather">
+                  <h5 class="card-title weather">所在地天氣與預測</h5>
+                  <div id="weather-row" class="row">
+                    <div class="col s6 m6 l6">
+                      <img class="weather-img" src="{{picture}}">
+                      <p id="forecast_p">{{minTemp}}-{{maxTemp}}°C</p>
+                    </div>
+                    <div id="outter-forecast" class="col s6 m6 l6">
+                      <div id="forecast" class="row">
+                        <div class="col s4 m4 l4">
+                          <h5>{{week1}}</h5>
+                          <img class="weather-img-thumb" src="{{picture1}}">
+                          <h5>{{maxTemp1}}°</h5>
+                          <h5>{{minTemp1}}°</h5>
+                        </div>
+                        <div class="col s4 m4 l4">
+                          <h5>{{week2}}</h5>
+                          <img class="weather-img-thumb" src="{{picture2}}">
+                          <h5>{{maxTemp2}}°</h5>
+                          <h5>{{minTemp2}}°</h5>
+                        </div>
+                        <div class="col s4 m4 l4">
+                          <h5>{{week3}}</h5>
+                          <!--<img class="weather-img-thumb" src="{% static "images/weather-icon/rain.png" %}">-->
+                          <img class="weather-img-thumb" src="{{picture3}}">
+                          <h5>{{maxTemp3}}°</h5>
+                          <h5>{{minTemp3}}°</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col l6 m6 s12">
+              <div class="card white hoverable z-depth-2">
+                <div class="card-content white-text weather">
+                  <h5 class="card-title pm25" style="background-color:{{PM25Color}}">細懸浮微粒濃度(PM2.5)</h5>
+                  <div id="weather-row" class="row pm25">
+                    <div class="col s6 m6 l6">
+                      <h5 id="pm25-title" style="border-bottom:{{PM25Color}} solid 3px;">{{PM25}}</h5>
+                    </div>
+                    <div class="col s6 m6 l6 value">
+                      <h5 id="pm25-value" style="color:{{PM25Color}}">{{PM25State}}</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col l6 m6 s12">
+              <div class="card x8D2CA8 hoverable z-depth-2">
+                <div class="card-content white-text">
+                  <span class="card-title">「中風」小知識</span>
+                </div>
+                <p>中風是由於腦血液循環出現障礙而引起的突發性局部神經功能缺失。因腦血管突然栓塞或爆破，造成腦神經細胞得不到足夠的養份和氧氣而壞死，產生各種神經症狀，如：半身不遂、口眼歪斜、咬字不清等，嚴重的甚至會導致昏迷或死亡。</p>
+              </div>
+            </div>
+            <div class="col l6 m6 s12">
+              <div class="card x1073B9 hoverable z-depth-2">
+                <div class="card-content white-text">
+                  <span class="card-title">廣告</span>
+                </div>
+                <p style="padding-top:0px;">
+                  <img src="{% static "images/ad.png" %}" style="height:100%;width:100%;">
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div id="bottom">
+            <hr> 
+            <span>頁面尾端</span>   
+          </div>
+        </div>
+      </div>  
+    </div>
+    <script type="text/javascript" src="{% static "materialize/js/jquery-2.2.4.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "materialize/js/materialize.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/overview.min.js" %}"></script>
+    <script type="text/javascript" src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
+    <script type="text/javascript">
+      var bar = new ProgressBar.Circle(container1, {
+        color: '{{OverallColor}}',
+        trailColor: '#ff',
+        trailWidth: 1,
+        duration: 1400,
+        easing: 'bounce',
+        strokeWidth: 5,
+        from: {
+          color: '{{OverallColor}}'
+        },
+        to: {
+          color: '{{OverallColor}}'
+        },
+        // Set default step function for all animate calls
+        step: function(state, circle) {
+          circle.path.setAttribute('stroke', state.color);
+          var value = Math.round(circle.value() * 100);
+          circle.setText('{{OverallState}}');
+        }
+      });
+      bar.animate({{OverallRisk}});
+      var bar = new ProgressBar.Line(container2, {
+        strokeWidth: 7,
+        easing: 'easeInOut',
+        duration: 1400,
+        color: '{{StrokeColor}}',
+        trailColor: '#eee',
+        trailWidth: 7,
+        svgStyle: {
+          width: '100%',
+          height: '100%'
+        }
+      });
+      bar.animate({{StrokeRisk}});
+      var bar = new ProgressBar.Line(container3, {
+        strokeWidth: 7,
+        easing: 'easeInOut',
+        duration: 1400,
+        color: '{{HeartColor}}',
+        trailColor: '#eee',
+        trailWidth: 7,
+        svgStyle: {
+          width: '100%',
+          height: '100%'
+        }
+      });
+      bar.animate({{userHeartRisk}});
+      var bar = new ProgressBar.Line(container4, {
+        strokeWidth: 7,
+        easing: 'easeInOut',
+        duration: 1400,
+        color: '{{HFColor}}',
+        trailColor: '#eee',
+        trailWidth: 7,
+        svgStyle: {
+          width: '100%',
+          height: '100%'
+        }
+      });
+      bar.animate({{HFRisk}});
+      var bar = new ProgressBar.Line(container5, {
+        strokeWidth: 7,
+        easing: 'easeInOut',
+        duration: 1400,
+        color: '{{AFColor}}',
+        trailColor: '#eee',
+        trailWidth: 7,
+        svgStyle: {
+          width: '100%',
+          height: '100%'
+        }
+      });
+      bar.animate({{AFRisk}});
+    </script>
+  </body>
+</html>

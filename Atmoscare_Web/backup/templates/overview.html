@@ -1,0 +1,673 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+  <html>
+  <head>
+    <title>Atmoscare+</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "images/favicons/apple-touch-icon.png" %}">
+    <link rel="icon" type="image/png" href="{% static "images/favicons/favicon-32x32.png" %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static "images/favicons/favicon-16x16.png" %}" sizes="16x16">
+    <link rel="manifest" href="{% static "images/favicons/manifest.json" %}">
+    <link rel="mask-icon" href="{% static "images/favicons/safari-pinned-tab.svg" %}" color="#52b68b">
+    <meta name="theme-color" content="#52b68b">
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static "materialize/css/materialize.min.css" %}"  media="screen,projection"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style type="text/css">
+      body{
+        background-color: #E5E5E5;
+        font-family: 'Roboto';
+      }
+      nav{
+        height: 70px;
+        z-index: 99;
+      }
+      @media only screen 
+      and (min-width : 991px) {
+      nav {
+          position: fixed;
+          top: 0;
+          transition: top 0.4s ease;
+          width: 100%;
+      }
+      }
+      .nav-up{
+        top:-70px;
+      }
+      div.nav-wrapper{
+        background-color: #52B68B;
+      }
+      div.nav-wrapper a{
+        height: 70px;
+        font-size: 26px;
+      }
+      a.brand-logo img{
+        height: 35px;
+        margin-left: 15px;
+        margin-right: 10px;
+        margin-top: 14px;
+      }
+      a.brand-logo span{
+        vertical-align: super;
+        margin-left: 15px;
+      }
+      .right.hide-on-med-and-down li a, i.material-icons{
+        color: rgba(66,66,66,0.65);
+      }
+      .right.hide-on-med-and-down li a{
+        letter-spacing: 2px;
+        padding-top: 6px;
+        font-size: 16px;
+        padding-left: 25px;
+        padding-right: 25px;
+        font-weight: 400;
+      }
+      .right.hide-on-med-and-down li{
+        display: inline-block;
+        position: relative;
+      }
+      .side-nav{
+        color: #424242;
+      }
+      .side-nav li a{
+        font-size: 16px;
+        color: rgba(66,66,66,0.65);
+      }
+      .side-nav li a span{
+        color: rgba(66,66,66,0.65);
+      }
+      .side-nav li a.active i{
+        color: #424242;
+      }
+      .side-nav li a.active span{
+        color: #424242;
+      }
+      a.button-collapse{
+        padding-top: 10px;
+      }
+      nav a.button-collapse i{
+        color: #ffffff;
+      }
+      #bottom{
+        text-align: center;
+        margin-bottom: 15px;
+      }
+      #bottom hr{
+        border-bottom: 3px solid #52B68B;
+        width: 46%;
+        margin-top: 36px;
+      }
+      #bottom span{
+        font-size: 14px;
+        color: #424242
+      }
+      #top{
+        text-align: center;
+        margin-bottom: 35px;
+        margin-top: 20px;
+      }
+      #top hr{
+        border-bottom: 3px solid #52B68B;
+        width: 46%;
+        margin-top: 0px;
+      }
+      #top span{
+        font-size: 14px;
+        color: #424242
+      }
+      .right.hide-on-med-and-down li ul li{
+        background-color: white;
+        list-style: none;
+        display: block;
+        color: #424242;;
+        padding: 0;
+        font-weight: bold;
+        position: relative;
+        line-height: 32px;
+      }
+      .right.hide-on-med-and-down li ul{
+        letter-spacing: 2px;
+        position: absolute;
+        right:0;
+        margin: -1px 0 0 -20px;
+        padding: 0;
+        display: none;
+        white-space:nowrap;
+        background-color: white;
+        top: 70px;
+      }
+      .right.hide-on-med-and-down li:hover .z-depth-2{
+        display: inline-flex;
+      }
+      div.nav-wrapper .side-nav a{
+        margin-left: 0px;
+        width: 270px
+      }
+      .side-nav img{
+        height: 56px;
+        margin: 28px;
+        margin-bottom: -25px;
+      }
+      @media only screen and (min-width : 600px) {
+      div.nav-wrapper a{
+        padding-top: 5px;
+        margin-left: 10px;
+        letter-spacing: 2px;
+        padding-top: 6px;
+        display: inline-flex;
+        width: 180px;
+      }
+      }
+      @media only screen and (min-width: 993px) {
+      div.nav-wrapper a{
+        padding-top: 5px;
+        margin-left: 70px;
+      }
+      .row .col.l3{
+        position: fixed;
+        top: 70px;
+      }
+      .row .col.l9{
+        position: relative;
+        right: -25%;
+      }
+      div.nav-wrapper a .material-icons{
+        display: none;
+      }
+      #main_container{
+        top:70px;
+      }
+      div.nav-wrapper a.button-collapse{
+        display: none;
+      }
+      }
+      @media only screen and (max-width: 600px) {
+      div.nav-wrapper a{
+        padding-top: 10px;
+        margin-left: 10px;
+        display: inline-flex;
+        letter-spacing: 2px;
+        padding-top: 6px;
+        width: 180px;
+      }
+      }
+      .side-nav ul li a{
+        width: 270px;
+      }
+      #main_container{
+        width: 85%;
+        position: relative;
+      }
+      .table-of-contents a:hover{
+        border-left:2px solid #0097a7;
+      }
+      .table-of-contents a{
+        color: rgba(66,66,66,0.65);
+      }
+      .table-of-contents a.active{
+        border-left:3px solid #0097a7;
+        color: #424242;
+      }
+      .table-of-contents a.active i{
+        color: #424242;
+      }
+      .section.table-of-contents{
+        font-size: 22px;
+        line-height: 40px;
+        letter-spacing: 2px;
+      }
+      .section.table-of-contents span{
+        position: relative;
+        top: -4px;
+      }
+      .col.l9{
+        position: relative;
+        top: 10px;
+      }
+      .card .card-title{
+        font-size: 18px;
+      }
+      .col.l6.m6.s12 p{
+        height: 195px;
+        background: white;
+        margin-top: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        letter-spacing: 2px;
+      }
+      div.card.x8D2CA8{
+        background-color: #8D2CA8;
+      }
+      div.card.x1073B9{
+        background-color: #1073B9;
+      }
+      .arrow-right {
+        width: 0; 
+        height: 0; 
+        border-top: 40px solid transparent;
+        border-bottom: 40px solid transparent;
+        border-left: 40px solid green;
+      }
+      .collection{
+        border:0px;
+      }
+      .collection .collection-item{
+        border:0px;
+        color: #424242;
+        padding:5px 10px 0px 10px;
+      }
+      #progress_detail{
+        margin-bottom: 0px;
+      }
+      #progress_detail .col.s5.m5.l5{
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: -11px;
+        color: #25A398;
+      }
+      #progress{
+        margin-top: 40px;
+      }
+      #container1{
+        margin: 0px;
+        width: 100%;
+        height: 100%;
+      }
+      .progressbar-text{
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .hoverable:hover{
+        box-shadow: 0 8px 17px 0 rgba(0,0,0,0.4),0 6px 20px 0 rgba(0,0,0,0.19);
+      }
+      #weather-row{
+        margin-bottom: 0px;
+      }
+      #weather-row p{
+        color: #424242;
+        font-size: 24px;
+        font-weight: 500;
+      }
+      .weather-img{
+        position:absolute;
+        height: 36%;
+      }
+      .card-content.white-text.weather{
+        padding: 0px;
+      }
+      .card h5.card-title{
+        color: white;
+        padding: 20px;
+        font-size: 18px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+      }
+      .card h5.card-title.weather{
+        background-color: #f9a825;
+      }
+      #forecast{
+        margin-bottom: 0px;
+        padding-right: 15px;
+      }
+      .weather-img-thumb{
+        width: 70%;
+      }
+      #forecast h5{
+        color: #424242;
+        font-size: 18px;
+        margin: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      #forecast .col.s4.m4.l4{
+        padding-right: 0px;
+        padding-left: 0px;
+        text-align: center;
+      }
+      #pm25-title{
+        color: #424242;
+        font-size: 24px;
+        letter-spacing: 1px;
+        margin: 0 auto;
+        width: 75px;
+      }
+      #pm25-value{
+        font-weight: 500;
+        font-size: 45px;
+        color: #ff6f00;
+        letter-spacing: 2px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+      #weather-row.row.pm25{
+        text-align: center;
+      }
+      .col.s6.m6.l6.value{
+        padding-left: 0px;
+        margin-left: -10px;
+      }
+    </style>
+    <!--end style-->
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo"><img src="{% static "images/icon-white.png" %}"><span>總覽</span></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="side-nav" id="mobile-demo">
+          <img src="{% static "images/icon-green.png" %}">
+          <li><a class="active" href="/overview"><i class="material-icons">home</i><span>&nbsp;總覽</span></a></li>
+          <li><a href="/questions"><i class="material-icons">help</i><span>&nbsp;常見問題</span></a></li>
+          <li><a href="/literatures"><i class="material-icons">class</i><span>&nbsp;文獻資料</span></a></li>
+          <li><a href="/settings"><i class="material-icons">settings</i><span>&nbsp;設定</span></a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="main_container" class="container">
+      <div class="row">
+        <div class="col hide-on-med-and-down l3">
+          <ul class="section table-of-contents">
+            <li><a class="active" href="/overview"><i class="material-icons">home</i><span>&nbsp;總覽</span></a></li>
+            <li><a href="/questions"><i class="material-icons">help</i><span>&nbsp;常見問題</span></a></li>
+            <li><a href="/literatures"><i class="material-icons">class</i><span>&nbsp;文獻資料</span></a></li>
+            <li><a href="/settings"><i class="material-icons">settings</i><span>&nbsp;設定</span></a></li>
+          </ul>
+        </div>
+        <div class="col l9">
+          <div id="top">
+            <span>氣象資料：{{update}}</span> 
+            <hr>   
+          </div>
+          <div class="row">
+            <div class="col l6 m6 s12">
+              <div class="card white hoverable z-depth-2">
+                <div class="card-content #424242">
+                  <span style="height:223px;">目前所在的風險評估：</span>
+                  <div class="row" style="height:200px;">
+                    <div id="progress" class="col s5 m5 l5">
+                      <div id="container1"></div>
+                    </div>
+                    <div class="col s7 m7 l7">
+                      <ul class="collection">
+                        <li class="collection-item">
+                          <span class="title">中風</span>
+                          <div id="progress_detail" class="row">
+                            <div class="col s7 m7 l7">
+                              <div id="container2"></div>
+                            </div>
+                            <div class="col s5 m5 l5">
+                              <span style="color:{{StrokeColor}}">{{StrokeState}}</span>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="collection-item">
+                          <span class="title">心臟病</span>
+                          <div id="progress_detail" class="row">
+                            <div class="col s7 m7 l7">
+                              <div id="container3"></div>
+                            </div>
+                            <div class="col s5 m5 l5">
+                              <span style="color:{{HeartColor}}">{{HeartState}}</span>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="collection-item">
+                          <span class="title">心臟衰竭</span>
+                          <div id="progress_detail" class="row">
+                            <div class="col s7 m7 l7">
+                              <div id="container4"></div>
+                            </div>
+                            <div class="col s5 m5 l5">
+                              <span style="color:{{HFColor}}">{{HFState}}</span>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="collection-item">
+                          <span class="title">心房震顫</span>
+                          <div id="progress_detail" class="row">
+                            <div class="col s7 m7 l7">
+                              <div id="container5"></div>
+                            </div>
+                            <div class="col s5 m5 l5">
+                              <span style="color:{{AFColor}}">{{AFState}}</span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col l6 m6 s12">
+              <div class="card xE9611D hoverable z-depth-2" style="background:{{OverallColor}};">
+                <div class="card-content white-text">
+                  <span class="card-title">針對所在環境建議</span>
+                </div>
+                <p>因此紫外線過強，出門請記得穿衣服，不要在街上裸奔，以免造成嚴重曬傷，甚至導致皮膚病變。</p>
+              </div>
+            </div>
+            <div class="col l6 m6 s12">
+              <div class="card white hoverable z-depth-2">
+                <div class="card-content white-text weather">
+                  <h5 class="card-title weather">所在地天氣與預測</h5>
+                  <div id="weather-row" class="row">
+                    <div class="col s6 m6 l6">
+                      <img class="weather-img" src="{{picture}}">
+                      <p id="forecast_p">{{minTemp}}-{{maxTemp}}°C</p>
+                    </div>
+                    <div id="outter-forecast" class="col s6 m6 l6">
+                      <div id="forecast" class="row">
+                        <div class="col s4 m4 l4">
+                          <h5>{{week1}}</h5>
+                          <img class="weather-img-thumb" src="{{picture1}}">
+                          <h5>{{maxTemp1}}°</h5>
+                          <h5>{{minTemp1}}°</h5>
+                        </div>
+                        <div class="col s4 m4 l4">
+                          <h5>{{week2}}</h5>
+                          <img class="weather-img-thumb" src="{{picture2}}">
+                          <h5>{{maxTemp2}}°</h5>
+                          <h5>{{minTemp2}}°</h5>
+                        </div>
+                        <div class="col s4 m4 l4">
+                          <h5>{{week3}}</h5>
+                          <!--<img class="weather-img-thumb" src="{% static "images/weather-icon/rain.png" %}">-->
+                          <img class="weather-img-thumb" src="{{picture3}}">
+                          <h5>{{maxTemp3}}°</h5>
+                          <h5>{{minTemp3}}°</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col l6 m6 s12">
+              <div class="card white hoverable z-depth-2">
+                <div class="card-content white-text weather">
+                  <h5 class="card-title pm25" style="background-color:{{PM25Color}}">細懸浮微粒濃度(PM2.5)</h5>
+                  <div id="weather-row" class="row pm25">
+                    <div class="col s6 m6 l6">
+                      <h5 id="pm25-title" style="border-bottom:{{PM25Color}} solid 3px;">{{PM25}}</h5>
+                    </div>
+                    <div class="col s6 m6 l6 value">
+                      <h5 id="pm25-value" style="color:{{PM25Color}}">{{PM25State}}</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col l6 m6 s12">
+              <div class="card x8D2CA8 hoverable z-depth-2">
+                <div class="card-content white-text">
+                  <span class="card-title">「中風」小知識</span>
+                </div>
+                <p>中風是由於腦血液循環出現障礙而引起的突發性局部神經功能缺失。因腦血管突然栓塞或爆破，造成腦神經細胞得不到足夠的養份和氧氣而壞死，產生各種神經症狀，如：半身不遂、口眼歪斜、咬字不清、吞嚥困難、視野受阻、大小便失禁等，嚴重的甚至會導致昏迷或死亡。</p>
+              </div>
+            </div>
+            <div class="col l6 m6 s12">
+              <div class="card x1073B9 hoverable z-depth-2">
+                <div class="card-content white-text">
+                  <span class="card-title">廣告</span>
+                </div>
+                <p>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="bottom">
+            <hr> 
+            <span>頁面尾端</span>   
+          </div>
+        </div>
+      </div>  
+    </div>
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="{% static "materialize/js/jquery-2.2.4.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "materialize/js/materialize.min.js" %}"></script>
+    <script type="text/javascript" src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
+    <script type="text/javascript">
+      $( document ).ready(function(){
+          $('.button-collapse').sideNav({
+              menuWidth: 240, // Default is 240
+              edge: 'left', // Choose the horizontal origin
+              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+          );
+      });
+      $(window).load(function(){ 
+        var card_height = $('#weather-row').height();
+        var forecast_height = $('#forecast').height();
+        var outter_forecast_height = $('#outter-forecast').height();
+        var card_width = $('.weather-img').width();
+        $('.weather-img').css({'margin-top':(card_height-card_width-45)/2});
+        $('.weather-img').css({'padding-left':($('#forecast').width()/2)-card_width/2});
+        $('#forecast_p').css({'padding-left':($('#forecast').width()/2)/2});
+        $('#forecast').css({'padding-top':(card_height-forecast_height)/2});
+        $('#forecast_p').css({'padding-top':outter_forecast_height-25});
+        $('#pm25-value').css({'padding-top':(card_height-49)/2, 'padding-bottom':(card_height-49)/2});
+        $('#pm25-title').css({'margin-top':(card_height-26)/2});
+        if($(window).width()>992){
+          $('#forecast_p').css({'font-size':'24px'});
+        }else if($(window).width()>375){
+          $('#forecast_p').css({'font-size':'20px'});
+        }else if($(window).width()>325){
+          $('#forecast_p').css({'font-size':'18px'});
+        }else{
+          $('#forecast_p').css({'font-size':'16px'});
+        }
+      });
+      
+      // Hide Header on on scroll down
+      var didScroll;
+      var lastScrollTop = 0;
+      var delta = 5;
+      var navbarHeight = $('nav').outerHeight();
+
+      $(window).scroll(function(event){
+          didScroll = true;
+      });
+
+      setInterval(function() {
+          if (didScroll) {
+              hasScrolled();
+              didScroll = false;
+          }
+      }, 250);
+
+      function hasScrolled() {
+          var st = $(this).scrollTop();
+          
+          // Make sure they scroll more than delta
+          if(Math.abs(lastScrollTop - st) <= delta)
+              return;
+          
+          // If they scrolled down and are past the navbar, add class .nav-up.
+          // This is necessary so you never see what is "behind" the navbar.
+          if (st > lastScrollTop && st > navbarHeight){
+              // Scroll Down
+              $('nav').removeClass('nav-down').addClass('nav-up');
+          } else {
+              // Scroll Up
+              if(st + $(window).height() < $(document).height()) {
+                  $('nav').removeClass('nav-up').addClass('nav-down');
+              }
+          }
+          
+          lastScrollTop = st;
+      }
+
+      var bar = new ProgressBar.Circle(container1, {
+        color: '{{OverallColor}}',
+        trailColor: '#ff',
+        trailWidth: 1,
+        duration: 1400,
+        easing: 'bounce',
+        strokeWidth: 5,
+        from: {color: '{{OverallColor}}'},
+        to: {color: '{{OverallColor}}'},
+        // Set default step function for all animate calls
+        step: function(state, circle) {
+          circle.path.setAttribute('stroke', state.color);
+          var value = Math.round(circle.value() * 100);
+          circle.setText('{{OverallState}}');
+        }
+      });
+
+      bar.animate({{OverallRisk}});
+
+      var bar = new ProgressBar.Line(container2, {
+        strokeWidth: 7,
+        easing: 'easeInOut',
+        duration: 1400,
+        color: '{{StrokeColor}}',
+        trailColor: '#eee',
+        trailWidth: 7,
+        svgStyle: {width: '100%', height: '100%'}
+      });
+
+      bar.animate({{StrokeRisk}});
+
+      var bar = new ProgressBar.Line(container3, {
+        strokeWidth: 7,
+        easing: 'easeInOut',
+        duration: 1400,
+        color: '{{HeartColor}}',
+        trailColor: '#eee',
+        trailWidth: 7,
+        svgStyle: {width: '100%', height: '100%'}
+      });
+
+      bar.animate({{userHeartRisk}});
+
+      var bar = new ProgressBar.Line(container4, {
+        strokeWidth: 7,
+        easing: 'easeInOut',
+        duration: 1400,
+        color: '{{HFColor}}',
+        trailColor: '#eee',
+        trailWidth: 7,
+        svgStyle: {width: '100%', height: '100%'}
+      });
+
+      bar.animate({{HFRisk}});
+
+      var bar = new ProgressBar.Line(container5, {
+        strokeWidth: 7,
+        easing: 'easeInOut',
+        duration: 1400,
+        color: '{{AFColor}}',
+        trailColor: '#eee',
+        trailWidth: 7,
+        svgStyle: {width: '100%', height: '100%'}
+      });
+
+      bar.animate({{AFRisk}});
+    </script>
+  </body>
+</html>

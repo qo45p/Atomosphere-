@@ -1,0 +1,253 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Atmoscare+</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "images/favicons/apple-touch-icon.png" %}">
+    <link rel="icon" type="image/png" href="https://i.imgur.com/oII4sMV.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://i.imgur.com/caRscKu.png" sizes="16x16">
+    <link rel="manifest" href="{% static "images/favicons/manifest.json" %}">
+    <link rel="mask-icon" href="{% static "images/favicons/safari-pinned-tab.svg" %}" color="#52b68b">
+    <meta name="theme-color" content="#52b68b">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static "materialize/css/materialize.min.css" %}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static "css/questions.min.css" %}"  media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo"><img src="{% static "images/icon-white.png" %}"><span>常見問題</span></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="side-nav" id="mobile-demo">
+          <img src="{% static "images/icon-green.png" %}">
+          <li><a href="/overview"><i class="material-icons">home</i><span>&nbsp;總覽</span></a></li>
+          <li><a class="active" href="/questions"><i class="material-icons">help</i><span>&nbsp;常見問題</span></a></li>
+          <li><a href="/literatures"><i class="material-icons">class</i><span>&nbsp;文獻資料</span></a></li>
+          <li><a href="/settings"><i class="material-icons">settings</i><span>&nbsp;設定</span></a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="systemModal" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <div class="container">
+          <h4>系統相關問題</h4>
+          <ul class="collapsible popout" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>我在手機版當中找不到詳細評估結果</div>
+              <div class="collapsible-body">
+                <p>手機版須點擊總評風險右下角的「詳細評估結果」查看。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>我點擊詳細結果無法回到總覽頁面</div>
+              <div class="collapsible-body">
+                <p>請使用頂欄的箭頭符號按鈕返回總覽頁面，若使用Android系統則亦可使用系統返回鍵返回。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>什麼是ID？</div>
+              <div class="collapsible-body">
+                <p>啟用雲端資料功能後，便會將您之前在之前所輸入的個人資料上傳至雲端保存，並給予ID碼，之後若在其他不曾使用過本系統的地方輸入ID碼，便可免除再次輸入個人資料的步驟。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>哪邊可以找到我的ID？</div>
+              <div class="collapsible-body">
+                <p>可在設定當中查看。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>我的ID忘記了怎麼辦？</div>
+              <div class="collapsible-body">
+                <p>您可以至已登入的裝置版本中的設定檢視，假設無法取得，您需要重新輸入個人資料，以取得新的ID。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>如果我很久都沒登入我的ID，會不會導致我的ID被刪除？</div>
+              <div class="collapsible-body">
+                <p>如果特定ID超過一年沒有被使用，將會導致該ID被刪除，您可以隨時重新輸入個人資料以取得新的ID。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>為什麼網頁版要手動更新所在地位置？</div>
+              <div class="collapsible-body">
+                <p>由於網頁版不能如同手機版直接使用GPS功能，因此需要您輸入並適時更新您的所在地資料以便提供正確的資訊。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>我用平板或是其他比較窄的視窗使用網頁版時找不到切換頁面的位置？</div>
+              <div class="collapsible-body">
+                <p>請使用頂欄左側的「三」符號切換頁面。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>我有時候會因為改變視窗大小導致頁面跑版怎麼辦？</div>
+              <div class="collapsible-body">
+                <p>請嘗試重新整理您的網頁。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>什麼是熱門文獻資料？</div>
+              <div class="collapsible-body">
+                <p>熱門文獻資料為文獻資料頁面中最近新增或結合時事之條目，將其整理後供您於總覽頁面直接檢視。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>為什麼我所顯示的最後更新時間一直離現在很久？</div>
+              <div class="collapsible-body">
+                <p>本產品須具備網路連線環境才可正常運作，且確認您的網路連線功能是否正常且穩定，網頁版用戶可嘗試重新整理網頁。</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!--<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">送出</a>-->
+        <input type="submit" value="了解" class="modal-action modal-close waves-effect waves-green btn-flat">
+      </div>
+    </div>
+    <div id="medicalModal" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <div class="container">
+          <h4>醫療相關問題</h4>
+          <ul class="collapsible popout" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>為什麼空氣品質與我的健康有關？</div>
+              <div class="collapsible-body">
+                <p>空氣品質的優劣與溫度的高低是常見的心血管疾病風險因子:在空氣品質方面，空氣汙染對於心血管疾病率與死亡率關係的機轉，可能包括血液的blood coagulability與改變心臟的神經控制系統，如心律不整。在氣溫方面，溫度與心血管之疾病率與死亡率關係的可能機轉，在高溫下血液的黏性與膽固醇濃度會受到影響，而低溫時則會增加血壓與纖維蛋白原濃度。此外，在高溫的時候可能使血壓下降，進而發生姿態性低血壓，這在老人族群中容易導致跌倒的意外傷害。除了高低溫的影響外，氣溫的變異程度也與心率變異(heart rate variability)及血壓壓力感受反射(baroreflex sensitivity)有關，可能會增加心律不整的風險。進一步的研究指出，氣溫變化與較常的Q-T interval時間，較常的QT interval是心室心率過速(ventricular tachyarrhythmias)與猝死(sudden death)的危險因子。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>系統是基於什麼指標評估風險的？</div>
+              <div class="collapsible-body">
+                <p> 我們的研究主要是在評估空氣污染濃度的改變對於心血管疾病發生率的影響，因此心血管疾病發生率的改變程度便是我們做為風險評估指標的依據。為了能更精準的評估風險，我們必須要能有效的控制空氣污然以外的因素，以減少誤差的產生，因此case-crossover design便是一個好的資料配對的方法。經過case-crossover的配對之後，屬於個人的因素可以有效的被控制，只留下屬於時間的因素是變動，如氣溫、空氣汙染等等，在這樣子的架構下我們可以更精確的評估出空氣汙染對疾病發生的真實的影響，並藉著評估的結果來訂定危險指標。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>什麼是空氣懸浮粒子密度？</div>
+              <div class="collapsible-body">
+                <p>懸浮粒子，或者稱為懸浮顆粒物。能懸浮在空氣中，空氣動力學當量直徑小於100μm的顆粒物稱為懸浮粒子，是大氣質量評價中的一個通用的重要污染指標。在環境科學中，顆粒物特指懸浮在空氣當中的固體顆粒或液滴，是空氣污染的一個主要來源。懸浮粒子濃度為每一立方米中包含多少的懸浮粒子，其單位為_g/m_。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>什麼是PM 2.5？</div>
+              <div class="collapsible-body">
+                <p>懸浮粒子中，空氣動力學直徑小於或等於10微米的懸 浮粒子稱為可吸入懸浮粒子（PM10）；直徑小於或等於2.5微米的懸浮粒子稱為細懸浮粒子（PM2.5）。懸浮粒子能夠在大氣中停留很長時間，並可隨呼 吸進入體內，積聚在氣管或肺中，影響身體健康。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>這項風險評估有多高的可信度？</div>
+              <div class="collapsible-body">
+                <p>本風險評估是由國家衛生研究院群體健康研究所進行研究，將參考大量文獻以及使用百萬比健保資料來分析，將有一定的可信度。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>腦中風的類型？</div>
+              <div class="collapsible-body">
+                <p>腦梗塞：係因血管或身體其他部位血液內的雜質或血塊，被血流沖落形成栓子，導致腦組織壞死和功能失調，常見有腦血栓症及腦栓塞症兩種。<p>腦出血：係因腦血管破裂，血液流入腦組織形成血塊壓迫腦組織，常見有腦組織內出血及蜘蛛膜下出血兩種。</p><p>暫時性腦缺血發作：係因暫時腦部缺血引起中風症狀，但一般在二十四小時內可完全恢復，不會留下任何後遺症。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>心臟衰竭的成因？</div>
+              <div class="collapsible-body">
+                <p>心臟衰竭的常見成因包括以下症狀︰冠心病、前心臟病發作（心肌梗塞）、高血壓、心瓣膜病、先天性心臟病、心肌病（心臟擴大）心內膜炎、心肌炎、糖尿病</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>心臟衰竭的症狀？</div>
+              <div class="collapsible-body">
+                <p>心衰竭的症狀並不一定顯而易見。有些患者在最早期的心衰竭階段可能完全沒有症狀。其他患者則可能將疲勞或呼吸困難等症狀視為步入老年的徵候而不予理會。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>心髒衰竭的風險？</div>
+              <div class="collapsible-body">
+                <p>部份患者較其他人更容易形成心衰竭。目前無法預測形成的機率與因素，不過有一些風險因素是已知的。若要有效控管心衰竭，留意風險因素並在早期尋求治療是良好的策略。心衰竭的風險因素包括：高血壓、心臟病發作（心肌梗塞）、心臟瓣膜異常、心臟擴大（心肌病）、心臟病的家族病史、糖尿病。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>什麼是心房震顫？</div>
+              <div class="collapsible-body">
+                <p>心房顫動是一種因為心臟內產生節律訊號的功能異常，導致心跳不規則且經常過快的病症。英文全名為atrial fibrillation，字面意思為「心房顫動」。</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>心臟病的成因？</div>
+              <div class="collapsible-body">
+                <p> 吸煙：</br>－香煙中的尼古丁會刺激心跳加速，並使血壓暫時增高</br>一氧化碳會降低心肌的含氧量</br>－尼古丁及一氧化碳會引致動脈硬化</br>高血壓：</br>－持續的高血壓會引致動脈粥樣硬化</br>－嚴重的會導致心臟衰竭、中風或腎衰竭和冠心病</br>高血脂：</br>－引致膽固醇增加，形成動脈粥樣硬化，因而導致冠心病</br>飲食習慣：</br>－乳酪、太肥膩和高膽固醇的食物，都會增加體內的膽固醇含量，引致高血壓及心臟病</br>糖尿病：</br>糖尿病患者的血糖水平較高，容易令血管受損及變硬</br>－患糖尿病的人士亦傾向於較肥胖及有高血壓</br>缺乏運動：</br>－適當有氧的運動可以加強心肺功能；缺乏運動會容易令身體過胖，是導致患上心臟病的危險因素　</br>高膽固醇：</br>－膽固醇過高積聚於血管中，使血管變窄、栓塞，引致心臟病和中風</br>精神緊張：</br>－心理壓力會令心跳加速及肌肉變得緊張，引致高血壓及心臟病</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>心臟病的特徵？</div>
+              <div class="collapsible-body">
+                <p>心絞痛、胸部呈壓迫感、劇痛可擴展至頸部、手臂及下顎、心律紊亂、水腫、氣促、出冷汗、暈眩、乏力、噁心、作嘔</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!--<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">送出</a>-->
+        <input type="submit" value="了解" class="modal-action modal-close waves-effect waves-green btn-flat">
+      </div>
+    </div>
+    <div id="main_container" class="container">
+      <div class="row">
+        <div class="col hide-on-med-and-down l3">
+          <ul class="section table-of-contents">
+            <li><a href="/overview"><i class="material-icons">home</i><span>&nbsp;總覽</span></a></li>
+            <li><a class="active" href="/questions"><i class="material-icons">help</i><span>&nbsp;常見問題</span></a></li>
+            <li><a href="/literatures"><i class="material-icons">class</i><span>&nbsp;文獻資料</span></a></li>
+            <li><a href="/settings"><i class="material-icons">settings</i><span>&nbsp;設定</span></a></li>
+          </ul>
+        </div>
+        <div class="col l9">
+          <div id="top">
+            <span>選擇你的問題種類</span> 
+            <hr>
+          </div>
+          <div class="row">
+            <div class="col l6 m6 s12">
+              <div id="systemCard" class="card white hoverable z-depth-2">
+                <div class="card-content #424242">
+                  <h3 id="systemQuestion" class="card-title">系統相關問題</h3>
+                  <img id="systemQuestionImg" src="{% static "images/question/medicalQuestions.png" %}">
+                  <h5 id="systemHint">點擊卡片了解更多</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col l6 m6 s12">
+              <div id="medicalCard" class="card white hoverable z-depth-2">
+                <div class="card-content #424242">
+                  <h3 id="medicalQuestion" class="card-title">醫療相關問題</h3>
+                  <img src="{% static "images/question/medicalQuestions.png" %}">
+                  <h5 id="medicalHint">點擊卡片了解更多</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="bottom">
+            <hr>
+            <span>頁面尾端</span>   
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="{% static "materialize/js/jquery-2.2.4.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "materialize/js/jquery.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "materialize/js/materialize.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/questions.min.js" %}"></script>
+    <script type="text/javascript">
+      if ($(window).width() > 993) {
+        $('#systemQuestionImg').attr('src', '{% static "images/question/pcSystemQuestions.png" %}');
+      } else if ($(window).width() > 600) {
+        $('#systemQuestionImg').attr('src', '{% static "images/question/padSystemQuestions.png" %}');
+      } else {
+        $('#systemQuestionImg').attr('src', '{% static "images/question/mobileSystemQuestions.png" %}');
+      }
+    </script>
+    <script type="text/javascript"></script>
+  </body>
+</html>

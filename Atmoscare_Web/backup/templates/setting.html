@@ -1,0 +1,721 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+	<html>
+	<head>
+    <title>Atmoscare+</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "images/favicons/apple-touch-icon.png" %}">
+    <link rel="icon" type="image/png" href="{% static "images/favicons/favicon-32x32.png" %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static "images/favicons/favicon-16x16.png" %}" sizes="16x16">
+    <link rel="manifest" href="{% static "images/favicons/manifest.json" %}">
+    <link rel="mask-icon" href="{% static "images/favicons/safari-pinned-tab.svg" %}" color="#52b68b">
+    <meta name="theme-color" content="#52b68b">
+		<!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  	<!--Import materialize.css-->
+   	<link type="text/css" rel="stylesheet" href="{% static "materialize/css/materialize.min.css" %}"  media="screen,projection"/>
+   	<!--Let browser know website is optimized for mobile-->
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style type="text/css">
+      body{
+        background-color: #E5E5E5;
+        font-family: 'Roboto';
+      }
+      nav{
+        height: 70px;
+        z-index: 99;
+      }
+      @media only screen 
+      and (min-width : 991px) {
+      nav {
+          position: fixed;
+          top: 0;
+          transition: top 0.4s ease;
+          width: 100%;
+      }
+      }
+      .nav-up{
+        top:-70px;
+      }
+      div.nav-wrapper{
+        background-color: #52B68B;
+      }
+      div.nav-wrapper a{
+        height: 70px;
+        font-size: 26px;
+      }
+      a.brand-logo img{
+        height: 35px;
+        margin-left: 15px;
+        margin-right: 10px;
+        margin-top: 14px;
+      }
+      a.brand-logo span{
+        vertical-align: super;
+        margin-left: 15px;
+      }
+      .right.hide-on-med-and-down li a, i.material-icons{
+        color: rgba(66,66,66,0.65);
+      }
+      .right.hide-on-med-and-down li a{
+        letter-spacing: 2px;
+        padding-top: 6px;
+        font-size: 16px;
+        padding-left: 25px;
+        padding-right: 25px;
+        font-weight: 400;
+      }
+      .right.hide-on-med-and-down li{
+        display: inline-block;
+        position: relative;
+      }
+      .side-nav{
+        color: #424242;
+      }
+      .side-nav li a{
+        font-size: 16px;
+        color: rgba(66,66,66,0.65);
+      }
+      .side-nav li a span{
+        color: rgba(66,66,66,0.65);
+      }
+      .side-nav li a.active i{
+        color: #424242;
+      }
+      .side-nav li a.active span{
+        color: #424242;
+      }
+      a.button-collapse{
+        padding-top: 10px;
+      }
+      nav a.button-collapse i{
+        color: #ffffff;
+      }
+      #bottom{
+        text-align: center;
+        margin-bottom: 15px;
+      }
+      #bottom hr{
+        border-bottom: 3px solid #52B68B;
+        width: 46%;
+        margin-top: 36px;
+      }
+      #bottom span{
+        font-size: 14px;
+        color: #424242
+      }
+      #top{
+        text-align: center;
+        margin-bottom: 35px;
+        margin-top: 20px;
+      }
+      #top hr{
+        border-bottom: 3px solid #52B68B;
+        width: 46%;
+        margin-top: 0px;
+      }
+      #top span{
+        font-size: 14px;
+        color: #424242
+      }
+      .right.hide-on-med-and-down li ul li{
+        background-color: white;
+        list-style: none;
+        display: block;
+        color: #424242;;
+        padding: 0;
+        font-weight: bold;
+        position: relative;
+        line-height: 32px;
+      }
+      .right.hide-on-med-and-down li ul{
+        letter-spacing: 2px;
+        position: absolute;
+        right:0;
+        margin: -1px 0 0 -20px;
+        padding: 0;
+        display: none;
+        white-space:nowrap;
+        background-color: white;
+        top: 70px;
+      }
+      .right.hide-on-med-and-down li:hover .z-depth-2{
+        display: inline-flex;
+      }
+      div.nav-wrapper .side-nav a{
+        margin-left: 0px;
+        width: 270px
+      }
+      .side-nav img{
+        height: 56px;
+        margin: 28px;
+        margin-bottom: -25px;
+      }
+      @media only screen and (min-width : 600px) {
+      div.nav-wrapper a{
+        padding-top: 5px;
+        margin-left: 10px;
+        letter-spacing: 2px;
+        padding-top: 6px;
+        display: inline-flex;
+        width: 180px;
+      }
+       #checkboxInput{
+      	top: 40px;
+      }
+      }
+      @media only screen and (min-width: 993px) {
+      div.nav-wrapper a{
+        padding-top: 5px;
+        margin-left: 70px;
+      }
+      .row .col.l3{
+        position: fixed;
+        top: 70px;
+      }
+      .row .col.l9{
+        position: relative;
+        right: -25%;
+      }
+      div.nav-wrapper a .material-icons{
+        display: none;
+      }
+      #main_container{
+        top:70px;
+      }
+      div.nav-wrapper a.button-collapse{
+        display: none;
+      }
+      }
+      @media only screen and (max-width: 600px) {
+      div.nav-wrapper a{
+        padding-top: 10px;
+        margin-left: 10px;
+        display: inline-flex;
+        letter-spacing: 2px;
+        padding-top: 6px;
+        width: 180px;
+      }
+      #checkboxInput{
+      	top: 0px;
+      }
+      }
+      .side-nav ul li a{
+        width: 270px;
+      }
+    </style>
+    <!--main container-->
+    <style type="text/css">
+      #main_container{
+        width: 85%;
+        position: relative;
+      }
+      .table-of-contents a:hover{
+        border-left:2px solid #0097a7;
+      }
+      .table-of-contents a{
+        color: rgba(66,66,66,0.65);
+      }
+      .table-of-contents a.active{
+        border-left:3px solid #0097a7;
+        color: #424242;
+      }
+      .table-of-contents a.active i{
+        color: #424242;
+      }
+      .section.table-of-contents{
+        font-size: 22px;
+        line-height: 40px;
+        letter-spacing: 2px;
+      }
+      .section.table-of-contents span{
+        position: relative;
+        top: -4px;
+      }
+    </style>
+    <!--overview style-->
+    <style type="text/css">
+      .card.white.hoverable.z-depth-2.content{
+      	height: 316px;
+      }
+      .col.l9{
+        position: relative;
+        top: 10px;
+        width: 100%;
+      }
+      .card .card-title{
+        font-size: 18px;
+      }
+      .col.l12.m12.s12 p{
+        color: #52B68B;
+        font-size: 44px;
+        font-weight: 800;
+        letter-spacing: 6px;
+        padding-top: 20px;
+        padding-bottom: 40px;
+        text-align: center;
+      }
+      .collection{
+        border:0px;
+      }
+      .collection .collection-item{
+        border:0px;
+        color: #424242;
+        padding:5px 10px 0px 10px;
+      }
+      #progress_detail{
+        margin-bottom: 0px;
+      }
+      #progress_detail .col.s5.m5.l5{
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: -11px;
+        color: #25A398;
+      }
+      #progress{
+        margin-top: 40px;
+      }
+      #container1{
+        margin: 0px;
+        width: 100%;
+        height: 100%;
+      }
+      .progressbar-text{
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .hoverable:hover{
+        box-shadow: 0 8px 17px 0 rgba(0,0,0,0.4),0 6px 20px 0 rgba(0,0,0,0.19);
+      }
+      .card-title{
+        letter-spacing: 3px;
+        font-weight: 700;
+      }
+      #hint{
+        color: #52B68B;
+        letter-spacing: 1px;
+        text-align: right;
+        font-size: 14px;
+        margin: 0px;
+      }
+      table{
+        margin-bottom: 5px;
+      }
+      td{
+        width: 50%;
+      }
+      #check{
+      	text-align: center;
+      	padding: 0px;
+      }
+      #name{
+      	width: 70%;
+      }
+      #disease .row{
+      	margin-bottom: 0px;
+      }
+    </style>
+    <style type="text/css">
+      .modal .modal-content{
+        padding: 0px;
+      }
+      .modal .modal-content{
+        padding: 0px;
+      }
+      .modal-action.modal-close{
+        color: #26a69a;
+      }
+      .modal-action.modal-close:hover{
+        color: #88cdaf;
+      }
+      h4{
+      	padding-top: 30px;
+      	color: #52B68B;
+      	font-weight: 400;
+      }
+      #idInput{
+        margin: 0 auto;
+        width: 50%;
+        position: relative;
+        top: 128px;
+        margin-bottom: 50px;
+      }
+      #noIdInputGender, #inputLocations, #inputLocation{
+        position: relative;
+        top: 8px;
+        width: 50%;
+        margin: 0 auto;
+        margin-bottom: 8px;
+      }
+      #noIdInputAge{
+        position: relative;
+        top: 6px;
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 25px;
+      }
+      #noIdInputAge label{
+        margin-left: -10px;
+      }
+      .modal .modal-content p{
+        position: relative;
+        top: 36px;
+        font-size: 14px;
+        color:#424242;
+        width: 50%;
+        margin: 0 auto;
+      }
+      #idIntro{
+        width: 100%;
+        font-size: 19px;
+        letter-spacing: 3px;
+        line-height: 44px;
+      }
+      #checkboxInput{
+        position: relative;
+        width: 60%;
+        margin: 0 auto;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+      }
+      #checkboxItem{
+        margin-top: 20px;
+      }
+      #check i{
+      	color: #52B68B;
+      }
+    </style>
+    <!--end style-->
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo"><img src="{% static "images/icon-white.png" %}"><span>設定</span></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="side-nav" id="mobile-demo">
+          <img src="{% static "images/icon-green.png" %}">
+          <li><a href="/overview"><i class="material-icons">home</i><span>&nbsp;總覽</span></a></li>
+          <li><a href="/questions"><i class="material-icons">help</i><span>&nbsp;常見問題</span></a></li>
+          <li><a href="/literatures"><i class="material-icons">class</i><span>&nbsp;文獻資料</span></a></li>
+          <li><a class="active" href="/settings"><i class="material-icons">settings</i><span>&nbsp;設定</span></a></li>
+        </ul>
+      </div>
+    </nav>
+	<div id="idModal" class="modal modal-fixed-footer">
+	    <div class="modal-content">
+	        <div class="container">
+    	    	<h4>使用方法</h4>
+    	    	<p id="idIntro">這是您的個人資料ID碼，若日後您在任何未曾使用過本系統的地方輸入此ID碼，便可直接沿用之前您已輸入過的個人資料並免除再次輸入的步驟。</p>
+	        </div>
+	    </div>
+	    <div class="modal-footer">
+	        <!--<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">送出</a>-->
+	        <input type="submit" value="了解" class="modal-action modal-close waves-effect waves-green btn-flat">
+	    </div>
+	</div>
+  <form class="form-horizontal" action="/settings/" method="POST" id="userInfoForm">{% csrf_token %}
+    <input type="hidden" name="userInfo" value="1"/>
+    <div id="profileModal" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <div class="container spec">
+          <h4>個人資料</h4>
+          <div id="inputLocations">
+            <label>縣市別</label>
+          <select class="county browser-default" name="county"></select>
+          </div>
+          <div id="inputLocation">
+            <label>鄉鎮市區別</label>
+          <select class="district browser-default" name="district"></select>
+          </div>
+          <input class="zipcode" name="zipcode" value="" type="text" autocomplete="off" readonly style="display:none;">
+        <div id="noIdInputGender">
+        <label>性別</label>
+        <select id="Gender" name="Gender" class="browser-default">
+          <option value="M">男</option>
+          <option value="F">女</option>
+        </select>
+      </div>
+      <div id="noIdInputAge" class="input-field">
+        <input id="age" type="number" class="validate" name="Age" value="{{userAge}}">
+        <label for="age">年齡</label>
+      </div>
+    </div>
+    </div>
+    <div class="modal-footer">
+    <!--<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">送出</a>-->
+    <input type="submit" class=" modal-action modal-close waves-effect waves-green btn-flat">
+    </div>
+    </div>
+  </form>
+  <form class="form-horizontal" action="/settings/" method="POST" id="healthForm">{% csrf_token %}
+  <input type="hidden" name="healthUpdate" value="1"/>
+	<div id="diseaseModal" class="modal modal-fixed-footer">
+	    <div class="modal-content">
+	        <div class="container">
+	    	<h4>個人病史</h4>
+			<div id="checkboxInput" class="row">
+				<div id="checkboxItem" class="col s12 m6 l6">
+					<input type="hidden" name="HT"  value="0">
+					<input type="checkbox" id="fact3" name="HT" value="1" {{checkHT}}/>
+					<label for="fact3">高血壓</label>
+				</div>
+				<div id="checkboxItem" class="col s12 m6 l6">
+					<input type="hidden" name="DM"  value="0">
+					<input type="checkbox" id="fact4" name="DM" value="1" {{checkDM}}/>
+					<label for="fact4">糖尿病</label>
+				</div>
+				<div id="checkboxItem" class="col s12 m6 l6">
+					<input type="hidden" name="DysLip"  value="0">
+					<input type="checkbox" id="fact5" name="DysLip" value="1" {{checkDysLip}}/>
+					<label for="fact5">高血脂</label>
+				</div>
+				<div id="checkboxItem" class="col s12 m6 l6">
+					<input type="hidden" name="Asthma"  value="0">
+					<input type="checkbox" id="fact6" name="Asthma" value="1" {{checkAsthma}}/>
+					<label for="fact6">氣喘</label>
+				</div>
+				<div id="checkboxItem" class="col s12 m6 l6">
+					<input type="hidden" name="HF"  value="0">
+					<input type="checkbox" id="fact7" name="HF" value="1" {{checkHF}}/>
+					<label for="fact7">心臟衰竭</label>
+				</div>
+				<div id="checkboxItem" class="col s12 m6 l6">
+					<input type="hidden" name="Stroke"  value="0">
+					<input type="checkbox" id="fact8" name="Stroke" value="1" {{checkStroke}}/>
+					<label for="fact8">中風</label>
+				</div>
+				<div id="checkboxItem" class="col s12 m6 l6">
+					<input type="hidden" name="AF"  value="0">
+					<input type="checkbox" id="fact9" name="AF" value="1" {{checkAF}}/>
+					<label for="fact9">心房震顫</label>
+				</div>
+        <div id="checkboxItem" class="col s12 m6 l6">
+          <input type="hidden" name="Painkiller"  value="0">
+          <input type="checkbox" id="fact10" name="Painkiller" value="1" {{checkPainkiller}}/>
+          <label for="fact10">使用止痛藥</label>
+        </div>
+			</div>
+	        </div>
+	    </div>
+	    <div class="modal-footer">
+	        <!--<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">送出</a>-->
+	        <input type="submit" class=" modal-action modal-close waves-effect waves-green btn-flat">
+	    </div>
+	</div>
+  </form>
+  <div id="main_container" class="container">
+    <div class="row">
+      <div class="col hide-on-med-and-down l3">
+        <ul class="section table-of-contents">
+          <li><a href="/overview"><i class="material-icons">home</i><span>&nbsp;總覽</span></a></li>
+          <li><a href="/questions"><i class="material-icons">help</i><span>&nbsp;常見問題</span></a></li>
+          <li><a href="/literatures"><i class="material-icons">class</i><span>&nbsp;文獻資料</span></a></li>
+          <li><a class="active" href="/settings"><i class="material-icons">settings</i><span>&nbsp;設定</span></a></li>
+        </ul>
+      </div>
+      <div class="col l9">
+        <div id="top">
+          <span>檢視與修改您的資料</span>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="col l12 m12 s12">
+            <div id="id" class="card white hoverable z-depth-2">
+              <div class="card-content #424242">
+                <span class="card-title">ID：</span>
+                <p>{{userSessionID}}</p>
+                <h5 id="hint">點擊卡片了解更多</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col l6 m6 s12">
+            <div id="profile" class="card white hoverable z-depth-2 content">
+              <div class="card-content #424242">
+                <span class="card-title">個人資料：</span>
+                <table class="striped">
+                  <tbody>
+                    <tr>
+                      <td>性別</td>
+                      <td>{{userGender_done}}</td>
+                    </tr>
+                    <tr>
+                      <td>年齡</td>
+                      <td>{{userAge}}</td>
+                    </tr>
+                    <tr>
+                      <td>縣市別</td>
+                      <td>{{userCity}}</td>
+                    </tr>
+                    <tr>
+                      <td>鄉鎮市區別</td>
+                      <td>{{userTown}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h5 id="hint">點擊卡片以修改</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col l6 m6 s12">
+            <div id="disease" class="card white hoverable z-depth-2 content">
+              <div class="card-content #424242">
+                <span class="card-title">個人病史：</span>
+                <div class="row">
+                  <div class="col s6 m6 l6">
+                    <table class="striped">
+                      <tbody>
+                        <tr>
+                          <td id="name">高血壓</td>
+                          <td id="check">
+                            <i class="material-icons">{{userHT_done}}</i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td id="name">糖尿病</td>
+                          <td id="check">
+                            <i class="material-icons">{{userDM_done}}</i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td id="name">高血脂</td>
+                          <td id="check">
+                            <i class="material-icons">{{userDysLip_done}}</i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td id="name">氣喘</td>
+                          <td id="check">
+                            <i class="material-icons">{{userAsthma_done}}</i>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col s6 m6 l6">
+                    <table class="striped">
+                      <tbody>
+                        <tr>
+                          <td id="name">心臟衰竭</td>
+                          <td id="check">
+                            <i class="material-icons">{{userHF_done}}</i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td id="name">中風</td>
+                          <td id="check">
+                            <i class="material-icons">{{userStroke_done}}</i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td id="name">心房震顫</td>
+                          <td id="check">
+                            <i class="material-icons">{{userAF_done}}</i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td id="name">使用止痛藥</td>
+                          <td id="check">
+                            <i class="material-icons">{{userPainkiller_done}}</i>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <h5 id="hint">點擊卡片以修改</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="bottom">
+          <hr>
+          <span>頁面尾端</span>
+        </div>
+      </div>
+    </div>
+  </div>
+   	<!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="{% static "materialize/js/jquery-2.2.4.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "materialize/js/jquery.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "materialize/js/jquery.tw-city-selector.js" %}"></script>
+    <script type="text/javascript">
+      $(function() {
+        $('.spec').tw_citySelector('.county', '.district', '.zipcode');
+      });
+    </script>
+   	<script type="text/javascript" src="{% static "materialize/js/materialize.min.js" %}"></script>
+    <script type="text/javascript">
+      $( document ).ready(function(){
+      	$('.modal-trigger').leanModal();
+          $('.button-collapse').sideNav({
+              menuWidth: 240, // Default is 240
+              edge: 'left', // Choose the horizontal origin
+              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+          );
+          var card_height = $('#weather-row').height();
+          var forecast_height = $('#forecast').height();
+          var outter_forecast_height = $('#outter-forecast').height();
+          var card_width = $('.weather-img').width();
+          $('.weather-img').css({'margin-top':(card_height-card_width-65)/2});
+          $('#forecast').css({'padding-top':(card_height-forecast_height)/2});
+          $('#forecast_p').css({'padding-top':outter_forecast_height-25});
+          $('#pm25-value').css({'padding-top':(card_height-49)/2, 'padding-bottom':(card_height-49)/2});
+          $('#pm25-title').css({'margin-top':(card_height-26)/2});
+      });
+    </script>
+    <script type="text/javascript">
+		$( "#profile" ).click(function() {
+		    $('#profileModal').openModal();
+		});
+		$( "#disease" ).click(function() {
+		    $('#diseaseModal').openModal();
+		});
+		$( "#id" ).click(function() {
+		    $('#idModal').openModal();
+		});
+    </script>
+    <script type="text/javascript">
+      // Hide Header on on scroll down
+      var didScroll;
+      var lastScrollTop = 0;
+      var delta = 5;
+      var navbarHeight = $('nav').outerHeight();
+
+      $(window).scroll(function(event){
+          didScroll = true;
+      });
+
+      setInterval(function() {
+          if (didScroll) {
+              hasScrolled();
+              didScroll = false;
+          }
+      }, 250);
+
+      function hasScrolled() {
+          var st = $(this).scrollTop();
+          
+          // Make sure they scroll more than delta
+          if(Math.abs(lastScrollTop - st) <= delta)
+              return;
+          
+          // If they scrolled down and are past the navbar, add class .nav-up.
+          // This is necessary so you never see what is "behind" the navbar.
+          if (st > lastScrollTop && st > navbarHeight){
+              // Scroll Down
+              $('nav').removeClass('nav-down').addClass('nav-up');
+          } else {
+              // Scroll Up
+              if(st + $(window).height() < $(document).height()) {
+                  $('nav').removeClass('nav-up').addClass('nav-down');
+              }
+          }
+          
+          lastScrollTop = st;
+      }
+    </script>
+    <script>
+        $("#Gender").val('{{userGender}}');
+    </script>
+  </body>
+</html>

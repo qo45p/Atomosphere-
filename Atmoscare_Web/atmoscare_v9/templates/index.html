@@ -1,0 +1,901 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+	<html>
+	<head>
+    <title>Atmoscare+</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "images/favicons/apple-touch-icon.png" %}">
+    <link rel="icon" type="image/png" href="{% static "images/favicons/favicon-32x32.png" %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static "images/favicons/favicon-16x16.png" %}" sizes="16x16">
+    <link rel="manifest" href="{% static "images/favicons/manifest.json" %}">
+    <link rel="mask-icon" href="{% static "images/favicons/safari-pinned-tab.svg" %}" color="#52b68b">
+    <meta name="theme-color" content="#52b68b">
+		<!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  	<!--Import materialize.css-->
+   	<link type="text/css" rel="stylesheet" href="{% static "materialize/css/materialize.min.css" %}"  media="screen,projection"/>
+   	<!--Let browser know website is optimized for mobile-->
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style type="text/css">
+      body{
+        background-color: #E5E5E5;
+        font-family: 'Roboto';
+      }
+      nav{
+        height: 70px;
+        z-index: 99;
+      }
+
+      div.nav-wrapper{
+        background-color: #52B68B;
+      }
+      div.nav-wrapper a{
+        height: 70px;
+        font-size: 26px;
+      }
+      a.brand-logo img{
+        height: 35px;
+        margin-left: 15px;
+        margin-right: 10px;
+        margin-top: 14px;
+      }
+      a.brand-logo span{
+        vertical-align: super;
+        margin-left: 15px;
+      }
+      #nav-mobile a{
+        color: white;
+        margin: 0px;
+        width: initial;
+        font-size: 20px;
+        font-weight: 300;
+      }
+      .right.hide-on-med-and-down li a, i.material-icons{
+        color: rgba(66,66,66,0.65);
+      }
+      .right.hide-on-med-and-down li a{
+        letter-spacing: 2px;
+        padding-top: 6px;
+        font-size: 16px;
+        padding-left: 25px;
+        padding-right: 25px;
+        font-weight: 400;
+      }
+      .right.hide-on-med-and-down li{
+        display: inline-block;
+        position: relative;
+      }
+      .side-nav{
+        color: #424242;
+      }
+      .side-nav li a{
+        font-size: 16px;
+        color: rgba(66,66,66,0.65);
+      }
+      .side-nav li a span{
+        color: rgba(66,66,66,0.65);
+      }
+      .side-nav li a.active i{
+        color: #424242;
+      }
+      .side-nav li a.active span{
+        color: #424242;
+      }
+      a.button-collapse{
+        padding-top: 10px;
+      }
+      nav a.button-collapse i{
+        color: #ffffff;
+      }
+      .right.hide-on-med-and-down li ul li{
+        background-color: white;
+        list-style: none;
+        display: block;
+        color: #424242;
+        padding: 0;
+        font-weight: bold;
+        position: relative;
+        line-height: 32px;
+      }
+      .right.hide-on-med-and-down li ul{
+        letter-spacing: 2px;
+        position: absolute;
+        right:0;
+        margin: -1px 0 0 -20px;
+        padding: 0;
+        display: none;
+        white-space:nowrap;
+        background-color: white;
+        top: 70px;
+      }
+      .right.hide-on-med-and-down li:hover .z-depth-2{
+        display: inline-flex;
+      }
+      div.nav-wrapper .side-nav a{
+        margin-left: 0px;
+        width: 270px
+      }
+      .side-nav img{
+        height: 56px;
+        margin: 28px;
+        margin-bottom: -25px;
+      }
+      @media only screen and (min-width : 600px) {
+      div.nav-wrapper a{
+        padding-top: 5px;
+        margin-left: 10px;
+        letter-spacing: 2px;
+        padding-top: 6px;
+        display: inline-flex;
+        width: 180px;
+      }
+      }
+      @media only screen and (min-width: 993px) {
+      div.nav-wrapper a{
+        padding-top: 5px;
+        margin-left: 70px;
+      }
+      .row .col.l3{
+        position: absolute;
+        top: 70px;
+      }
+      .row .col.l9{
+        position: relative;
+        right: -25%;
+      }
+      div.nav-wrapper a .material-icons{
+        display: none;
+      }
+      div.nav-wrapper a.button-collapse{
+        display: none;
+      }
+      #mobile-btn{
+        display: none;
+      }
+      }
+      @media only screen and (max-width: 600px) {
+      div.nav-wrapper a{
+        padding-top: 10px;
+        margin-left: 10px;
+        display: inline-flex;
+        letter-spacing: 2px;
+        padding-top: 6px;
+        width: 180px;
+      }
+      }
+      .side-nav ul li a{
+        width: 270px;
+      }
+    </style>
+    <!--main container-->
+    <style type="text/css">
+      #main_container{
+        width: 85%;
+        position: relative;
+        top:99px;
+      }
+      .table-of-contents a:hover{
+        border-left:2px solid #0097a7;
+      }
+      .table-of-contents a{
+        color: rgba(66,66,66,0.65);
+      }
+      .table-of-contents a.active{
+        border-left:3px solid #0097a7;
+        color: #424242;
+      }
+      .table-of-contents a.active i{
+        color: #424242;
+      }
+      .section.table-of-contents{
+        font-size: 22px;
+        line-height: 40px;
+        letter-spacing: 2px;
+      }
+      .section.table-of-contents span{
+        position: relative;
+        top: -4px;
+      }
+    </style>
+    <!--overview style-->
+    <style type="text/css">
+      .col.l9{
+        position: relative;
+        top: 10px;
+      }
+      .card .card-title{
+        font-size: 18px;
+      }
+      .arrow-right {
+        width: 0; 
+        height: 0; 
+        border-top: 40px solid transparent;
+        border-bottom: 40px solid transparent;
+        border-left: 40px solid green;
+      }
+      .collection{
+        border:0px;
+      }
+      .collection .collection-item{
+        border:0px;
+        color: #424242;
+        padding:5px 10px 0px 10px;
+      }
+      #progress_detail{
+        margin-bottom: 0px;
+      }
+      #progress_detail .col.s5.m5.l5{
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: -11px;
+        color: #25A398;
+      }
+      #progress{
+        margin-top: 40px;
+      }
+      #container1{
+        margin: 0px;
+        width: 100%;
+        height: 100%;
+      }
+      .progressbar-text{
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .hoverable:hover{
+        box-shadow: 0 8px 17px 0 rgba(0,0,0,0.4),0 6px 20px 0 rgba(0,0,0,0.19);
+      }
+      @media only screen and (min-width : 600px) {
+
+      }
+      @media only screen and (min-width: 993px) {
+
+      }
+      @media only screen and (max-width : 993px) {
+
+      }
+    </style>
+    <style type="text/css">
+      #morebtn{
+        margin-top: -32px;
+        margin-left: 0px;
+      }
+      #morebtn:hover{
+        box-shadow: 0 5px 11px 0 rgba(0,0,0,0.30),0 4px 15px 0 rgba(0,0,0,0.15);
+      }
+      #lessbtn{
+        margin-top: 38px;
+        margin-left: 0px;
+        display: none;
+      }
+      #lessbtn:hover{
+        box-shadow: 0 5px 11px 0 rgba(0,0,0,0.30),0 4px 15px 0 rgba(0,0,0,0.15);
+      }
+      #more, #less{
+        color: #424242;
+        display: initial;
+      }
+      #logo{
+        display: none;
+      }
+      #logo img{
+        height: 55px;
+        margin-top: 5px;
+      }
+      #nav-mobile i{
+        display: initial;
+      }
+      #mobile-btn a{
+        margin: 0px;
+        width: 100%;
+        letter-spacing: 2px;
+      }
+      #mobile-btn .col.s6.m6{
+        padding: 0px;
+      }
+      #mobile-btn a:hover{
+        background-color: rgba(0,0,0,0.1);
+      }
+      #mobile-btn span{
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 300;
+      }
+      .modal .modal-content{
+        padding: 0px;
+      }
+      .modal .modal-content .col.s12{
+        padding: 0px;
+      }
+      .tabs .tab a{
+        color: #26a69a;
+        padding-top: 10px;
+      }
+      .tabs .tab a:hover{
+        color: #88cdaf;
+      }
+      .tabs .indicator{
+        background-color: #26a69a;
+      }
+      .modal-action.modal-close{
+        color: #26a69a;
+      }
+      .modal-action.modal-close:hover{
+        color: #88cdaf;
+      }
+      #idInput{
+        margin: 0 auto;
+        width: 50%;
+        position: relative;
+        top: 128px;
+        margin-bottom: 50px;
+      }
+      #noIdInputGender, #inputLocations, #inputLocation{
+        position: relative;
+        top: 36px;
+        width: 50%;
+        margin: 0 auto;
+        margin-bottom: 8px;
+      }
+      #noIdInputAge{
+        position: relative;
+        top: 30px;
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 25px;
+      }
+      #noIdInputAge label{
+        margin-left: -10px;
+      }
+      .modal .modal-content p{
+        position: relative;
+        top: 36px;
+        font-size: 14px;
+        color:#424242;
+        width: 50%;
+        margin: 0 auto;
+      }
+      #checkboxInput{
+        position: relative;
+        top: 36px;
+        width: 60%;
+        margin: 0 auto;
+        letter-spacing: 2px;
+        margin-bottom: 45px;
+      }
+      #checkboxItem{
+        margin-top: 20px;
+      }
+      .col.l12.m12.s12.section.scrollspy{
+        margin-bottom: 36px;
+      }
+      #intro, #principle{
+        padding: 0px;
+      }
+      #download{
+        text-align: center;
+        color: #666666;
+      }
+      #download .container{
+        padding-bottom: 20px;
+      }
+      #download .row{
+        padding-top: 20px;
+        padding-bottom: 30px;
+      }
+      #download .card.video{
+        padding-bottom: 20px;
+      }
+      #download_img{
+        padding-top: 25px;
+        width: 85%;
+        margin: 0 auto;
+      }
+      #download span{
+        font-size: 20px;
+        padding-bottom: 30px;
+      }
+      #download img{
+        margin-top: 25px;
+        width: 85%;
+      }
+      #download h3{
+        margin-top: 30px;
+      }
+      footer.page-footer{
+        position: relative;
+        top: 120px;
+        padding-top: 0px;
+        background-color: #52B68B;
+      }
+      hr{
+        width: 80%;
+        margin-bottom: 40px;
+      }
+      @media only screen and (min-width: 993px){
+        .footer-copyright .container{
+          width: 90%;
+        }
+      }
+      @media only screen and (max-width: 992px){
+        .footer-copyright{
+          text-align: center;
+        }
+      }
+
+      div.card-content.white-text.intro-card-content{
+        padding: 0px;
+      }
+      .card h5.card-title{
+        font-weight: 500;
+        color: white;
+        background-color: #52B68B;
+        padding: 30px;
+        font-size: 36px;
+        text-align: initial;
+        margin-bottom: 0px;
+      }
+      .col.l12.m12.s12 p{
+        background: white;
+        margin-top: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        letter-spacing: 2px;
+        margin-bottom: 0px;
+      }
+      .col.l12.m12.s12 .col.s12.m6.l6{
+        text-align: center;
+        color: #52B68B;
+        font-weight: 400;
+        font-size: 22px;
+        text-align: initial;
+        padding: 25px;
+        padding-right: 20px;
+      }
+      .col.l12.m12.s12 .col.s12.m6.l6 img{
+        display: block;
+        margin: 0 auto;
+        align: center;
+        margin-top: 10px;
+        width: 90%;
+      }
+      #intro-row{
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+      }
+      #progressBar{
+        position: absolute;
+        top: -8px;
+        left: -5px;
+        width: 20%;
+        background-color: #26a69a;
+        border: 0px;
+        height: 2px;
+      }
+    </style>
+    <!--end style-->
+  </head>
+  <body>
+    <div id="pc" class="parallax-container">
+      <div class="parallax">
+        <img src="{% static "images/index-parallax.jpg" %}">
+      </div>
+    </div>
+    <div id="fixNav">
+      <nav>
+        <div class="nav-wrapper">
+          <a id="morebtn" class="brand-logo center btn-floating btn-large waves-effect waves-light white z-depth-2"><i id="more" class="material-icons">expand_more</i></a>
+          <a id="lessbtn" class="brand-logo center btn-floating btn-large waves-effect waves-light white z-depth-2"><i id="less" class="material-icons">expand_less</i></a>
+          <a href="#" id="logo" class="brand-logo"><img src="{% static "images/logo-white.png" %}"></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#loginmodal" class="modal-trigger"><i class="material-icons left">open_in_browser</i>立即使用</a></li>
+            <li><a id="getApp" href=""><i class="material-icons left">get_app</i>下載APP</a></li>
+          </ul>
+          <div id="mobile-btn" class="row">
+            <div class="col s6 m6">
+              <a href="#loginmodal" class="modal-trigger"><span><i class="material-icons left">open_in_browser</i>立即使用</span></a>
+            </div>
+            <div class="col s6 m6">
+              <a id="mobileGetApp"><span><i class="material-icons left">get_app</i>下載APP</span></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- Modal Structure -->
+    <form class="form-horizontal" action="/overview/" method="POST">{% csrf_token %}
+      <div id="loginmodal" class="modal modal-fixed-footer">
+        <div id="getContentHeight" class="modal-content">
+            <div class="row">
+              <div id="getModalHeight" class="col s12">
+                <ul class="tabs">
+                  <li class="tab col s3"><a id="withID" href="#idLogin" class="active">我要註冊</a></li>
+                  <li class="tab col s3"><a id="noID" href="#noIdLogin">使用ID登入</a></li>
+                </ul>
+                <div id="noIdLogin" class="col s12">
+                  <div class="container">
+                    <div id="idInput" class="input-field">
+                      <input id="icon_prefix" type="text" class="validate" name="userID">
+                      <label for="icon_prefix">請輸入ID號碼</label>
+                    </div>
+                  </div>
+                </div>
+                <!-- Gender Age HT DM DysLip Asthma HF Stroke AF-->
+                <div id="idLogin" class="col s12">
+                  <div class="container">
+                    <p>若您是第一次使用本服務、或是遺失之前已創辦之ID 者，請選擇本選項並於下方填寫個人資料並進行註冊：</br></br></p>
+                    <div id="inputLocations">
+                      <label>縣市別</label>
+                      <select class="county browser-default" name="county"></select>
+                    </div>
+                    <div id="inputLocation">
+                      <label>鄉鎮市區別</label>
+                      <select class="district browser-default" name="district"></select>
+                    </div>
+                    <input class="zipcode" name="zipcode" value="" type="text" autocomplete="off" readonly style="display:none;">
+                    <div id="noIdInputGender">                    
+                      <label>性別</label>
+                      <select name="Gender" class="browser-default">
+                        <option value="M">男</option>
+                        <option value="F">女</option>
+                      </select>
+                    </div>
+                    <div id="noIdInputAge" class="input-field">
+                      <input id="age" type="number" class="validate" name="Age">
+                      <label for="age">年齡</label>
+                    </div>
+                    <p>請根據自身情況勾選下列病史，若無相符病史請直接點選送出</p>
+                    <div id="checkboxInput" class="row">
+                      <div id="checkboxItem" class="col s12 m6 l6">
+                        <input type="hidden" name="HT"  value="0">
+                        <input type="checkbox" id="fact3" name="HT" value="1"/>
+                        <label for="fact3">高血壓</label>
+                      </div>
+                      <div id="checkboxItem" class="col s12 m6 l6">
+                        <input type="hidden" name="DM"  value="0">
+                        <input type="checkbox" id="fact4" name="DM" value="1"/>
+                        <label for="fact4">糖尿病</label>
+                      </div>
+                      <div id="checkboxItem" class="col s12 m6 l6">
+                        <input type="hidden" name="DysLip"  value="0">
+                        <input type="checkbox" id="fact5" name="DysLip" value="1"/>
+                        <label for="fact5">高血脂</label>
+                      </div>
+                      <div id="checkboxItem" class="col s12 m6 l6">
+                        <input type="hidden" name="Asthma"  value="0">
+                        <input type="checkbox" id="fact6" name="Asthma" value="1"/>
+                        <label for="fact6">氣喘</label>
+                      </div>
+                      <div id="checkboxItem" class="col s12 m6 l6">
+                        <input type="hidden" name="HF"  value="0">
+                        <input type="checkbox" id="fact7" name="HF" value="1"/>
+                        <label for="fact7">心臟衰竭</label>
+                      </div>
+                      <div id="checkboxItem" class="col s12 m6 l6">
+                        <input type="hidden" name="Stroke"  value="0">
+                        <input type="checkbox" id="fact8" name="Stroke" value="1"/>
+                        <label for="fact8">中風</label>
+                      </div>
+                      <div id="checkboxItem" class="col s12 m6 l6">
+                        <input type="hidden" name="AF"  value="0">
+                        <input type="checkbox" id="fact9" name="AF" value="1"/>
+                        <label for="fact9">心房震顫</label>
+                      </div>
+                      <div id="checkboxItem" class="col s12 m6 l6">
+                        <input type="hidden" name="Painkiller"  value="0">
+                        <input type="checkbox" id="fact10" name="Painkiller" value="1"/>
+                        <label for="fact10">使用止痛藥</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <hr id="progressBar">
+          <!--<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">送出</a>-->
+          <input type="submit" class=" modal-action modal-close waves-effect waves-green btn-flat" value="送出">
+        </div>
+      </div>
+    </form>
+    <div id="main_container" class="container">
+      <div class="row">
+        <div class="col hide-on-med-and-down l3">
+          <ul class="section table-of-contents">
+            <li><a id="toVideo" href="#video"><i class="material-icons">movie</i><span>&nbsp;影片</span></a></li>
+            <li><a id="toIntro" href="#intro"><i class="material-icons">info_outline</i><span>&nbsp;介紹</span></a></li>
+            <li><a id="toDownload" href="#download"><i class="material-icons">get_app</i><span>&nbsp;下載APP</span></a></li>
+          </ul>
+        </div>
+        <div class="col l9">
+          <div class="row">
+            <div id="video" class="col l12 m12 s12 section scrollspy">
+              <div class="card video white hoverable z-depth-2">
+                <video class="responsive-video" controls style="width:100%">
+                  <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            <!--intro-->
+            <div id="intro" class="col l12 m12 s12 section scrollspy">
+              <hr>
+              <div class="col l12 m12 s12">
+                <div class="card white hoverable z-depth-2">
+                  <div class="card-content white-text intro-card-content">
+                    <h5 class="card-title">疾病風險，即時分析</h5>
+
+                    <div id="intro-row" class="row">
+                      <div class="col s12 m6 l6">
+                        <p>結合用戶所提供之個人健康資料及所在地大氣即時數據，評估心血管疾病發生風險。</p>
+                      </div>
+                      <div class="col s12 m6 l6">
+                        <img class="intro-img" src="{% static "images/intro-2.png" %}">
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col l12 m12 s12">
+                <div class="card white hoverable z-depth-2">
+                  <div class="card-content white-text intro-card-content">
+                    <h5 class="card-title">隨時隨地，皆可使用</h5>
+
+                    <div id="intro-row" class="row">
+                      <div class="col s12 m6 l6">
+                        <p>於各平台使用網頁版或應用程式版本，並使用雲端同步資料，讓您隨時了解心血管疾病發生風險現況。</p>
+                      </div>
+                      <div class="col s12 m6 l6">
+                        <img class="intro-img" src="{% static "images/intro-1.png" %}">
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col l12 m12 s12">
+                <div class="card white hoverable z-depth-2">
+                  <div class="card-content white-text intro-card-content">
+                    <h5 class="card-title">直覺美觀，輕鬆上手</h5>
+
+                    <div id="intro-row" class="row">
+                      <div class="col s12 m6 l6">
+                        <p>Atmoscare+以邏輯單純且優雅簡潔的設計，呈現所有您需要的資訊。</p>
+                      </div>
+                      <div class="col s12 m6 l6">
+                        <img class="intro-img" src="{% static "images/intro-3.png" %}">
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="download" class="col l12 m12 l12 section scrollspy">
+              <hr>
+              <div class="card video white hoverable z-depth-2">
+                <div class="container">
+                  <img id="download_img"src="{% static "images/logo-promo.png" %}">
+                  <h3>立即下載行動版APP!</h3>
+                  <div class="row">
+                    <div class="col s12 m6 l6">
+                      <a href="">
+                        <img src="{% static "images/android.png" %}">
+                      </a>
+                    </div>
+                    <div class="col s12 m6 l6">
+                      <a href="">
+                        <img src="{% static "images/ios.png" %}">
+                      </a>
+                    </div>
+                  </div>
+                  <span>您也可以於 atmoscareplus.com 使用網頁版</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+    <footer class="page-footer">
+      <div class="footer-copyright">
+        <div class="container">
+          Copyright © 2016 Atomscare+ All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+   	<!--Import jQuery before materialize.js-->
+   	<script type="text/javascript" src="{% static "materialize/js/jquery-2.2.4.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "materialize/js/jquery.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "materialize/js/jquery.tw-city-selector.js" %}"></script>
+    <script type="text/javascript">
+      $(function() {
+        $('.form-horizontal').tw_citySelector('.county', '.district', '.zipcode');
+      });
+    </script>
+    <script type="text/javascript" src="{% static "materialize/js/materialize.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "materialize/js/jquery.mousewheel.min.js" %}"></script>
+    <script type="text/javascript" src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            n=1
+            moving=0
+            $(window).mousewheel(function(event){
+                $("html,body").stop()
+                if (moving==1) {
+                  event.preventDefault();
+                }             
+                else{
+                    if(event.deltaY==-1){
+                      if(n < 2){
+                        n++;
+                      }
+                    }
+                    else if(event.deltaY==1){
+                      if(n > 1){
+                        n--;
+                      }
+                    }
+                }
+                if ($(document).scrollTop() < $(window).height()-70 && $(window).width() > 993 && $('#loginmodal').hasClass('open')== false) {
+                  moving=1
+                  if(n==2){
+                    $('html, body').animate({
+                      scrollTop : $(window).height()-69
+                    }, 450,'easeInOutQuad', function(){moving = 0});
+                  }
+                  else{
+                    $('html, body').animate({
+                      scrollTop : 0
+                    }, 450, 'easeInOutQuad', function(){moving = 0});
+                  }
+                }
+            })         
+        $('#pc').height($(window).height()-70);
+        $('.parallax').parallax();
+        $('.button-collapse').sideNav({
+            menuWidth: 240, // Default is 240
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+          }
+        );
+        $('.scrollspy').scrollSpy();
+        $('ul.tabs').tabs();
+        $('select').material_select();
+        $('#getApp').on('click', function(event) {
+          event.preventDefault();
+          $('html, body').animate({
+            scrollTop : $('#download').offset().top-140
+          }, 800);
+        });
+        $('#mobileGetApp').on('click', function(event) {
+          var target = $('#download').offset().top-70;
+          event.preventDefault();
+          $('html, body').animate({
+            scrollTop : target+30
+          }, 800);
+        });
+        $('#toVideo').on('click', function(event) {
+          event.preventDefault();
+          $('html, body').animate({
+            scrollTop : $(window).height()-70
+          }, 500);
+        });
+        if($(window).width() > 993){
+          $('#main_container').css('top',21);
+        }
+
+      });
+      $( window).load(function(){
+        $('#video .card.video.white.hoverable.z-depth-2').css( "height", $('.responsive-video').height()-1);
+        $('.dropdown-content.select-dropdown').css({'max-height':$(window).height()/3});
+      });
+      $('.modal-content').scroll(function() {
+          var modal_content = $('.modal-content').scrollTop();
+          console.log(modal_content);
+          var total = $('#getModalHeight').height()-$('#getContentHeight').height()+30;
+          console.log(total);
+          if (modal_content/total<=1){
+            $('#progressBar').css('width', ((modal_content)/total*0.8+0.2)*100+'%');
+          }
+        });
+        $('#noID').click(function(){
+          $('#progressBar').css('display', 'none');
+        });
+        $('#withID').click(function(){
+          $('#progressBar').css('display', 'block');
+        });
+      $('.modal-trigger').click(function(event){
+        if ({{hasSession}} == 1) {
+          event.preventDefault();
+          window.location = "/overview";
+        }else{
+          $('.modal').openModal();
+        }
+      });
+      $('.modal-trigger').on('click', function(event) {
+        setTimeout(function(){$('.indicator').css({'right':$('.tab.col.s3').width(),'left':0});},300);
+        $('.modal.modal-fixed-footer').height(500);
+      });
+      $('#morebtn').on('click', function(event) {
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop : $(window).height()-70
+        }, 800);
+      });
+      $('#lessbtn').on('click', function(event) {
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop : 0
+        }, 800);
+      });
+      $('#logo').on('click', function(event) {
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop : 0
+        }, 800);
+      });
+      $(document).scroll(function() {
+        var x = $(window).height()-71
+        var y = $(this).scrollTop();
+        if(y > x ){
+          $('#fixNav').css({'position':'fixed','top':0,'width':'100%','z-index':99});
+          $('#main_container').css('top',99);
+          if($(window).width() > 993){
+            $('.col.hide-on-med-and-down.l3').css({'position':'fixed','top':'160px'});
+          }
+        }
+        else{
+          $('#fixNav').css({'position':'initial','top':0});
+          $('#main_container').css('top',21);
+          if($(window).width() > 993){
+            $('.col.hide-on-med-and-down.l3').css({'position':'absolute','top':'70px'});
+          }
+        }
+        if($(window).width()>993){
+          if (y > x) {
+            $('#morebtn').fadeOut("fast", function () {
+              $(this).css({display:"none"});
+            });
+            $('#logo').fadeIn("fast", function () {
+              $(this).css({display:"initial"});
+            });
+          } else {
+            $('#morebtn').fadeIn("fast", function () {
+              $(this).css({display:"initial"});
+            });
+            $('#logo').fadeOut("fast", function () {
+              $(this).css({display:"none"});
+            });
+          }
+        }
+        else{
+          if (y > x) {
+            $('#morebtn').fadeOut("fast", function () {
+              $(this).css({display:"none"});
+            });
+            $('#lessbtn').fadeIn(50, function () {
+              $(this).css({display:"initial"});
+            });
+            $('#main_container').fadeIn(50, function(){
+              $(this).css({top:"95px"});
+            });
+          } else {
+            $('#morebtn').fadeIn("fast", function () {
+              $(this).css({display:"initial"});
+            });
+            $('#lessbtn').fadeOut("fast", function () {
+              $(this).css({display:"none"});
+            });
+            $('#main_container').fadeIn("fast", function(){
+              $(this).css({top:"25px"});
+            });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

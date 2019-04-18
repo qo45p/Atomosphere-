@@ -1,0 +1,322 @@
+body {
+    background-color: #E5E5E5;
+    font-family: 'Roboto';
+}
+nav {
+    height: 70px;
+    z-index: 99;
+}
+@media only screen and (min-width: 991px) {
+    nav {
+        position: fixed;
+        top: 0;
+        transition: top 0.4s ease;
+        width: 100%;
+    }
+}
+.nav-up {
+    top: -70px;
+}
+div.nav-wrapper {
+    background-color: #52B68B;
+}
+div.nav-wrapper a {
+    height: 70px;
+    font-size: 26px;
+}
+a.brand-logo img {
+    height: 35px;
+    margin-left: 15px;
+    margin-right: 10px;
+    margin-top: 14px;
+}
+a.brand-logo span {
+    vertical-align: super;
+    margin-left: 15px;
+}
+.right.hide-on-med-and-down li a,
+i.material-icons {
+    color: rgba(66, 66, 66, 0.65);
+}
+.right.hide-on-med-and-down li a {
+    letter-spacing: 2px;
+    padding-top: 6px;
+    font-size: 16px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-weight: 400;
+}
+.right.hide-on-med-and-down li {
+    display: inline-block;
+    position: relative;
+}
+.side-nav {
+    color: #424242;
+}
+.side-nav li a {
+    font-size: 16px;
+    color: rgba(66, 66, 66, 0.65);
+}
+.side-nav li a span {
+    color: rgba(66, 66, 66, 0.65);
+}
+.side-nav li a.active i {
+    color: #424242;
+}
+.side-nav li a.active span {
+    color: #424242;
+}
+a.button-collapse {
+    padding-top: 10px;
+}
+nav a.button-collapse i {
+    color: #ffffff;
+}
+#bottom {
+    text-align: center;
+    margin-bottom: 15px;
+}
+#bottom hr {
+    border-bottom: 3px solid #52B68B;
+    width: 46%;
+    margin-top: 36px;
+}
+#bottom span {
+    font-size: 14px;
+    color: #424242
+}
+#top {
+    text-align: center;
+    margin-bottom: 35px;
+    margin-top: 20px;
+}
+#top hr {
+    border-bottom: 3px solid #52B68B;
+    width: 46%;
+    margin-top: 0px;
+}
+#top span {
+    font-size: 14px;
+    color: #424242
+}
+.right.hide-on-med-and-down li ul li {
+    background-color: white;
+    list-style: none;
+    display: block;
+    color: #424242;
+    ;
+    padding: 0;
+    font-weight: bold;
+    position: relative;
+    line-height: 32px;
+}
+.right.hide-on-med-and-down li ul {
+    letter-spacing: 2px;
+    position: absolute;
+    right: 0;
+    margin: -1px 0 0 -20px;
+    padding: 0;
+    display: none;
+    white-space: nowrap;
+    background-color: white;
+    top: 70px;
+}
+.right.hide-on-med-and-down li:hover .z-depth-2 {
+    display: inline-flex;
+}
+div.nav-wrapper .side-nav a {
+    margin-left: 0px;
+    width: 270px
+}
+.side-nav img {
+    height: 56px;
+    margin: 28px;
+    margin-bottom: -25px;
+}
+@media only screen and (min-width: 600px) {
+    div.nav-wrapper a {
+        padding-top: 5px;
+        margin-left: 10px;
+        letter-spacing: 2px;
+        padding-top: 6px;
+        display: inline-flex;
+        width: 180px;
+    }
+    #checkboxInput {
+        top: 40px;
+    }
+}
+@media only screen and (min-width: 993px) {
+    div.nav-wrapper a {
+        padding-top: 5px;
+        margin-left: 70px;
+    }
+    .row .col.l3 {
+        position: fixed;
+        top: 70px;
+    }
+    .row .col.l9 {
+        position: relative;
+        right: -25%;
+    }
+    div.nav-wrapper a .material-icons {
+        display: none;
+    }
+    #main_container {
+        top: 70px;
+    }
+    div.nav-wrapper a.button-collapse {
+        display: none;
+    }
+}
+@media only screen and (max-width: 600px) {
+    div.nav-wrapper a {
+        padding-top: 10px;
+        margin-left: 10px;
+        display: inline-flex;
+        letter-spacing: 2px;
+        padding-top: 6px;
+        width: 180px;
+    }
+    #checkboxInput {
+        top: 0px;
+    }
+}
+.side-nav ul li a {
+    width: 270px;
+}
+#main_container {
+    width: 85%;
+    position: relative;
+}
+.table-of-contents a:hover {
+    border-left: 2px solid #0097a7;
+}
+.table-of-contents a {
+    color: rgba(66, 66, 66, 0.65);
+}
+.table-of-contents a.active {
+    border-left: 3px solid #0097a7;
+    color: #424242;
+}
+.table-of-contents a.active i {
+    color: #424242;
+}
+.section.table-of-contents {
+    font-size: 22px;
+    line-height: 40px;
+    letter-spacing: 2px;
+}
+.section.table-of-contents span {
+    position: relative;
+    top: -4px;
+}
+.card.white.hoverable.z-depth-2.content {
+    height: 316px;
+}
+.col.l9 {
+    position: relative;
+    top: 10px;
+    width: 100%;
+}
+.card .card-title {
+    font-size: 18px;
+}
+.col.l12.m12.s12 p {
+    color: #52B68B;
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: 6px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    text-align: center;
+}
+.collection {
+    border: 0px;
+}
+.collection .collection-item {
+    border: 0px;
+    color: #424242;
+    padding: 5px 10px 0px 10px;
+}
+.hoverable:hover {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card-title {
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+.modal .modal-content {
+    padding: 0px;
+}
+.modal .modal-content {
+    padding: 0px;
+}
+.modal-action.modal-close {
+    color: #26a69a;
+}
+.modal-action.modal-close:hover {
+    color: #88cdaf;
+}
+#systemModal h4 {
+    padding-top: 30px;
+    color: #52B68B;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+#medicalModal h4 {
+    padding-top: 30px;
+    color: #e53935;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+#medicalModal input {
+    color: #e53935;
+}
+.modal .modal-content p {
+    font-size: 15px;
+    color: #424242;
+    width: 85%;
+    margin: 0 auto;
+    letter-spacing: 2px;
+    line-height: 30px;
+}
+#systemQuestion,
+#medicalQuestion {
+    margin-top: 0px;
+    font-weight: 400;
+    text-align: center;
+    font-size: 22px;
+}
+#systemQuestion {
+    color: #52B68B;
+}
+#medicalQuestion {
+    color: #e53935;
+}
+#systemHint {
+    color: #52B68B;
+    letter-spacing: 1px;
+    text-align: right;
+    font-size: 14px;
+    margin: 0px;
+}
+#medicalHint {
+    color: #e53935;
+    letter-spacing: 1px;
+    text-align: right;
+    font-size: 14px;
+    margin: 0px;
+}
+.collapsible-header {
+    font-size: 16px;
+    padding-top: 6px;
+    letter-spacing: 1px;
+}
+.card-content {
+    text-align: center;
+}
+.card-content img {
+    width: 40%;
+    margin-bottom: 15px;
+}
